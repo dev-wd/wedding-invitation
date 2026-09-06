@@ -73,10 +73,9 @@
     .transport-detail { color:#465040; font-size:13px; line-height:1.75; }
     .gallery { padding:82px 21px 76px; background:#f5f6f4; text-align:center; }
     .gallery > p:last-of-type { margin:10px 0 27px; color:#66735f; font-size:12px; }
-    .gallery-grid { columns:3; column-gap:5px; overflow:hidden; transition:max-height .35s ease; }
-    .gallery-grid.is-collapsed { max-height:var(--gallery-preview-height, min(78vw, calc(100dvh - 340px))); }
-    .gallery-grid.is-expanded { max-height:none; }
-    .gallery-item { display:block; width:100%; min-width:0; margin:0 0 6px; padding:0; overflow:hidden; break-inside:avoid; border:0; background:transparent; cursor:zoom-in; }
+    .gallery-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); align-items:start; gap:5px; }
+    .gallery-grid.is-collapsed .gallery-item:nth-child(n+10) { display:none; }
+    .gallery-item { display:block; width:100%; min-width:0; margin:0; padding:0; overflow:hidden; border:0; background:transparent; cursor:zoom-in; }
     .gallery-item img { width:100%; height:auto; display:block; object-fit:contain; }
     .gallery-more { display:block; min-width:138px; margin:22px auto 0; padding:11px 18px; border:1px solid var(--line); border-radius:22px; background:#fff; color:var(--ink); font:500 12px "SUIT", sans-serif; letter-spacing:.04em; cursor:pointer; }
     .gallery-modal { position:fixed; z-index:10; inset:0; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(20,18,15,.92); }
@@ -319,19 +318,6 @@
     const modal = document.querySelector('.gallery-modal');
     const modalImage = modal.querySelector('img');
     const galleryItems = [...document.querySelectorAll('.gallery-item')];
-    const setGalleryPreviewHeight = () => {
-      if (galleryGrid.classList.contains('is-expanded')) return;
-      const targetHeight = Math.min(window.innerWidth * .78, Math.max(250, window.innerHeight - 370));
-      const itemBottoms = galleryItems.map((item) => item.offsetTop + item.offsetHeight).filter((height) => height > 0);
-      if (!itemBottoms.length) return;
-      const closestHeight = itemBottoms.reduce((closest, height) =>
-        Math.abs(height - targetHeight) < Math.abs(closest - targetHeight) ? height : closest
-      );
-      galleryGrid.style.setProperty('--gallery-preview-height', `${closestHeight}px`);
-    };
-    galleryItems.forEach((item) => item.querySelector('img').addEventListener('load', setGalleryPreviewHeight));
-    window.addEventListener('resize', setGalleryPreviewHeight);
-    setGalleryPreviewHeight();
     const galleryCount = modal.querySelector('.gallery-count');
     let activeGalleryIndex = 0;
     const showGalleryImage = (index) => {
