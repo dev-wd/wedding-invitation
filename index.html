@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e9edde">
+  <title>김수용 · 백서혜의 결혼 안내</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&amp;family=Cormorant+Garamond:wght@400;500&amp;family=Nanum+Pen+Script&amp;display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family:"SUIT"; font-style:normal; font-weight:100 900; font-display:swap; src:url("https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.woff2") format("woff2-variations"); }
+    :root { --ink:#30382b; --paper:#fbfbfa; --line:#d8ddd3; --accent:#7c8a60; }
+    * { box-sizing:border-box; }
+    html { background:#ededeb; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:"SUIT", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif; font-weight:400; letter-spacing:-.03em; }
+    .invite { width:min(100%, 520px); min-height:100vh; margin:0 auto; background:var(--paper); overflow:hidden; box-shadow:0 0 36px rgba(42,54,35,.13); }
+    .hero { position:relative; height:min(190vw, 960px); min-height:760px; background:url("assets/gallery/KJW03662-0.jpg") center center / cover no-repeat; }
+    .hero-copy { position:absolute; z-index:1; top:20%; inset-inline:28px; color:#fffdf9; text-align:center; text-shadow:0 1px 12px rgba(0,0,0,.26); }
+    .kicker { margin:0 0 13px; font-size:12px; letter-spacing:.16em; }
+    h1 { width:max-content; max-width:100%; margin:0 auto; overflow:hidden; font-family:"Nanum Pen Script", cursive; font-size:58px; line-height:1.15; font-weight:400; letter-spacing:.035em; white-space:nowrap; clip-path:inset(0 100% 0 0); animation:handwrite 1.7s cubic-bezier(.2,.75,.25,1) .2s forwards; }
+    .date { position:absolute; z-index:1; bottom:4%; left:50%; width:max-content; max-width:calc(100% - 56px); overflow:hidden; color:#fffdf9; font-family:"Caveat", "SUIT", sans-serif; font-size:19px; font-weight:500; letter-spacing:.09em; white-space:nowrap; text-align:center; text-shadow:0 1px 12px rgba(0,0,0,.26); transform:translateX(-50%); clip-path:inset(0 100% 0 0); animation:handwrite 1.45s cubic-bezier(.2,.75,.25,1) 1.55s forwards; }
+    @keyframes handwrite { from { clip-path:inset(0 100% 0 0); } to { clip-path:inset(0 0 0 0); } }
+    @media (prefers-reduced-motion:reduce) { h1, .date { clip-path:none; animation:none; } }
+    .intro { padding:84px 32px 78px; background:#fff; text-align:center; }
+    .flower { width:34px; height:34px; margin:0 auto 31px; position:relative; }
+    .flower::before, .flower::after { content:""; position:absolute; inset:7px; border:1px solid var(--accent); border-radius:100% 0 100% 0; transform:rotate(45deg); }
+    .flower::after { transform:rotate(135deg); }
+    .intro p { margin:0; font-size:16px; line-height:2.15; word-break:keep-all; }
+    .intro p + p { margin-top:30px; }
+    .names { margin-top:35px!important; font-size:18px!important; letter-spacing:.1em; }
+    .names span { padding:0 12px; color:var(--accent); font-size:19px; font-weight:300; vertical-align:0; }
+    .couple-photo { height:min(138vw, 680px); margin:0; overflow:hidden; background:#c9d5af; }
+    .couple-photo img { width:100%; height:100%; display:block; object-fit:cover; object-position:center 47%; filter:saturate(.8) sepia(.08); }
+    .about { padding:80px 40px; background:#ebf1e0; text-align:center; }
+    .section-eyebrow { margin:0 0 13px; color:var(--accent); font-size:11px; font-weight:500; letter-spacing:.15em; }
+    .about-title { margin:0; color:#111; font-family:"Cormorant Garamond", serif; font-size:36px; font-weight:400; letter-spacing:.06em; }
+    .gallery h2 { margin:0; font-size:19px; font-weight:400; letter-spacing:.08em; }
+    .about-intro { margin:25px 0 28px; color:#111; font-size:14px; line-height:1.85; }
+    .about-intro p { margin:0; }
+    .profile-list { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px; width:100%; margin:0 auto; }
+    .profile-card { padding:16px; border-radius:12px; background:#fff; box-shadow:0 4px 11px rgba(53,62,43,.16); }
+    .profile-photo { aspect-ratio:1; margin:0 0 14px; overflow:hidden; border-radius:9px; box-shadow:0 3px 7px rgba(53,62,43,.16); }
+    .profile-photo img { width:100%; height:100%; display:block; object-fit:cover; }
+    .profile-card:first-child .profile-photo img { object-position:35% center; }
+    .profile-card:last-child .profile-photo img { object-position:68% center; }
+    .profile-name { margin:0 0 12px; color:#111; font-size:13px; }
+    .profile-name strong { margin-right:5px; color:#a0b575; font-weight:600; }
+    .profile-bio { margin:0; color:#222; font-size:11px; line-height:1.7; white-space:pre-line; word-break:keep-all; }
+    .announcement { margin:0; padding:68px 32px 63px; background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); text-align:center; }
+    .announcement .label { margin:0 0 29px; color:#111; font-family:"Cormorant Garamond", serif; font-size:35px; font-style:normal; font-weight:400; letter-spacing:.08em; }
+    .date-korean { margin:0; color:#222; font-size:14px; line-height:1.6; }
+    .date-english { margin:6px 0 45px; color:#6f7569; font-size:12px; font-weight:400; letter-spacing:.02em; }
+    .calendar { display:grid; grid-template-columns:repeat(7, 1fr); align-items:center; row-gap:21px; color:#333; font-size:14px; font-weight:300; }
+    .calendar-weekday { font-size:13px; font-weight:400; }
+    .calendar-sunday { color:#e98585; }
+    .calendar-day { height:32px; display:flex; align-items:center; justify-content:center; }
+    .calendar-day.is-wedding { width:32px; margin:auto; border-radius:50%; background:#a0b575; color:#fff; }
+    .family-note { margin:48px 0 0; padding-top:34px; border-top:1px solid var(--line); color:#586453; font-size:13px; font-weight:600; line-height:2; word-break:keep-all; }
+    .gallery { padding:82px 21px 76px; background:#f5f6f4; text-align:center; }
+    .gallery > p:last-of-type { margin:10px 0 27px; color:#66735f; font-size:12px; }
+    .gallery-grid { display:grid; grid-template-columns:1.16fr .84fr; grid-auto-rows:154px; gap:5px; }
+    .gallery-item { min-width:0; padding:0; overflow:hidden; border:0; background:#c9d5af; cursor:zoom-in; }
+    .gallery-item:first-child { grid-row:span 2; }
+    .gallery-item:nth-child(4) { grid-column:span 2; }
+    .gallery-item img { width:100%; height:100%; display:block; object-fit:cover; transition:transform .45s ease; }
+    .gallery-item:hover img { transform:scale(1.045); }
+    .gallery-item:nth-child(1) img { object-position:50% 50%; }
+    .gallery-item:nth-child(2) img { object-position:68% 36%; }
+    .gallery-item:nth-child(3) img { object-position:31% 59%; }
+    .gallery-item:nth-child(4) img { object-position:50% 76%; }
+    .gallery-item:nth-child(5) img { object-position:50% 22%; }
+    .gallery-modal { position:fixed; z-index:10; inset:0; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(20,18,15,.92); }
+    .gallery-modal.is-open { display:flex; }
+    .gallery-modal img { max-width:100%; max-height:88vh; object-fit:contain; }
+    .gallery-close { position:absolute; top:18px; right:20px; border:0; background:transparent; color:#fff; font:32px/1 Arial, sans-serif; cursor:pointer; }
+    .gallery-nav { position:absolute; top:50%; width:54px; height:82px; transform:translateY(-50%); border:0; background:rgba(255,255,255,.03); color:#fff; font:34px/1 Arial, sans-serif; cursor:pointer; }
+    .gallery-nav:hover { background:rgba(255,255,255,.12); }
+    .gallery-prev { left:0; }
+    .gallery-next { right:0; }
+    .gallery-count { position:absolute; bottom:19px; color:rgba(255,255,255,.8); font:12px "SUIT", sans-serif; letter-spacing:.1em; }
+    .notice { padding:54px 34px 58px; text-align:center; }
+    .notice h2 { margin:0 0 18px; font-size:15px; font-weight:400; letter-spacing:.12em; }
+    .notice p { margin:0; color:#586453; font-size:13px; line-height:2; word-break:keep-all; }
+    .gift { padding:78px 28px 76px; background:#fff; text-align:center; }
+    .gift h2 { margin:0 0 13px; font-size:18px; font-weight:400; letter-spacing:.08em; }
+    .gift > p { margin:0 0 30px; color:#666; font-size:12px; line-height:1.9; word-break:keep-all; }
+    .accordion { display:grid; gap:12px; text-align:left; }
+    .accordion-item { overflow:hidden; border-radius:8px; background:#fff; box-shadow:0 1px 3px rgba(53,62,43,.12); transition:background .25s, box-shadow .25s; }
+    .accordion-item.is-open { background:#ebf1e0; box-shadow:0 5px 14px rgba(53,62,43,.13); }
+    .accordion-trigger { width:100%; height:60px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; border:0; border-radius:8px; background:#fff; color:#444; font:500 14px "SUIT", sans-serif; cursor:pointer; }
+    .accordion-arrow { width:20px; height:20px; display:grid; place-items:center; color:#7b8477; transition:transform .22s ease; }
+    .accordion-arrow svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.7; }
+    .accordion-item.is-open .accordion-trigger { border-radius:8px 8px 0 0; }
+    .accordion-item.is-open .accordion-arrow { transform:rotate(180deg); }
+    .accordion-panel { display:grid; grid-template-rows:0fr; transition:grid-template-rows .25s ease; }
+    .accordion-item.is-open .accordion-panel { grid-template-rows:1fr; }
+    .accordion-panel-inner { min-height:0; overflow:hidden; padding:0 12px; }
+    .accordion-item.is-open .accordion-panel-inner { padding:14px 12px 14px; }
+    .account-card { padding:22px; border-radius:12px; background:#fff; box-shadow:0 4px 11px rgba(53,62,43,.14); }
+    .account-name { display:flex; justify-content:space-between; margin-bottom:22px; color:#333; font-size:13px; }
+    .account-name strong { font-weight:400; }
+    .account-actions { display:flex; gap:8px; }
+    .account-copy { flex:1; min-width:0; min-height:48px; display:flex; align-items:center; justify-content:space-between; gap:14px; padding:9px 13px; border:0; border-radius:8px; background:#f4f4f4; color:#444; text-align:left; cursor:pointer; }
+    .account-copy small, .account-copy span { display:block; }
+    .account-copy small { margin-bottom:2px; color:#999; font:11px "SUIT", sans-serif; }
+    .account-copy span { font:12px "SUIT", sans-serif; letter-spacing:.06em; }
+    .copy-icon { flex:0 0 auto; display:grid; place-items:center; width:20px; height:20px; color:#5f675b; }
+    .copy-icon svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.7; }
+    .kakaopay-transfer { width:76px; min-height:48px; display:grid; place-items:center; border-radius:8px; background:#fce777; color:#222; font:700 10px/1 "SUIT", sans-serif; letter-spacing:-.04em; text-decoration:none; }
+    .sharing { padding:44px 28px 30px; background:#f1f2f0; }
+    .share-button { width:100%; height:48px; display:flex; align-items:center; justify-content:space-between; padding:0 20px; border:0; border-radius:12px; font:400 14px "SUIT", sans-serif; cursor:pointer; transition:transform .15s ease, filter .15s ease; }
+    .share-button + .share-button { margin-top:12px; }
+    .share-button:hover { filter:brightness(.97); }
+    .share-button:active { transform:scale(.99); }
+    .share-kakao { background:#fce777; color:#222; }
+    .share-copy { background:#afc18b; color:#fff; }
+    .share-icon { display:grid; place-items:center; width:24px; height:24px; }
+    .share-icon svg { width:21px; height:21px; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.7; }
+    footer { padding:31px 20px 34px; background:#f1f2f0; text-align:center; color:#5d6b55; font-size:11px; font-weight:500; letter-spacing:.14em; }
+    @media (max-width:380px) { .hero { min-height:700px; } h1 { font-size:48px; } .intro { padding-inline:23px; } }
+  </style>
+</head>
+<body>
+  <main class="invite">
+    <!-- 사진을 바꾸려면 assets/hero-placeholder.png 파일을 같은 이름의 사진으로 교체하세요. -->
+    <section class="hero" aria-label="김수용과 백서혜의 결혼 안내">
+      <div class="hero-copy">
+        <h1>김수용·백서혜</h1>
+      </div>
+      <p class="date">07 NOVEMBER 2026, SATURDAY</p>
+    </section>
+    <section class="intro">
+      <div class="flower" aria-hidden="true"></div>
+      <p>서로의 하루를 가장 가까이에서 바라보며<br>함께 걸어갈 한 걸음을 시작합니다.</p>
+      <p>기쁜 날의 마음을 먼저 전합니다.<br>따뜻한 마음으로 축복해 주세요.</p>
+      <p class="names">김수용 <span>&amp;</span> 백서혜</p>
+    </section>
+    <figure class="couple-photo">
+      <!-- 사진을 바꾸려면 아래 src를 새 사진 경로로 바꿔 주세요. -->
+      <img src="assets/gallery/KJW04505-0.jpg" alt="김수용과 백서혜의 커플 사진">
+    </figure>
+    <section class="about" aria-labelledby="about-title">
+      <h2 class="about-title" id="about-title">ABOUT US</h2>
+      <div class="about-intro"><p>저희 커플을 소개합니다</p><p>하나로 이어진 두 개의 우주</p></div>
+      <!-- 각 프로필 사진과 소개 문구는 실제 정보로 교체해 주세요. -->
+      <div class="profile-list">
+        <article class="profile-card">
+          <figure class="profile-photo"><img src="assets/groom-childhood.png" alt="어린 시절의 신랑 김수용"></figure>
+          <p class="profile-name"><strong>신랑</strong>김수용</p>
+          <p class="profile-bio">김상락 · 정진우의 아들
+1993년 4월 출생</p>
+        </article>
+        <article class="profile-card">
+          <figure class="profile-photo"><img src="assets/bride-childhood-softened.png" alt="어린 시절의 신부 백서혜"></figure>
+          <p class="profile-name"><strong>신부</strong>백서혜</p>
+          <p class="profile-bio">정국헌의 딸
+1992년 4월 출생</p>
+        </article>
+      </div>
+    </section>
+    <section class="announcement">
+      <p class="label">WEDDING DAY</p>
+      <p class="date-korean">2026년 11월 7일 토요일</p>
+      <p class="date-english">Saturday, November 7, 2026</p>
+      <div class="calendar" role="grid" aria-label="2026년 11월 달력">
+        <div class="calendar-weekday calendar-sunday" role="columnheader">일</div><div class="calendar-weekday" role="columnheader">월</div><div class="calendar-weekday" role="columnheader">화</div><div class="calendar-weekday" role="columnheader">수</div><div class="calendar-weekday" role="columnheader">목</div><div class="calendar-weekday" role="columnheader">금</div><div class="calendar-weekday" role="columnheader">토</div>
+        <div class="calendar-day calendar-sunday" role="gridcell">1</div><div class="calendar-day" role="gridcell">2</div><div class="calendar-day" role="gridcell">3</div><div class="calendar-day" role="gridcell">4</div><div class="calendar-day" role="gridcell">5</div><div class="calendar-day" role="gridcell">6</div><div class="calendar-day is-wedding" role="gridcell" aria-label="2026년 11월 7일, 예식일">7</div>
+        <div class="calendar-day calendar-sunday" role="gridcell">8</div><div class="calendar-day" role="gridcell">9</div><div class="calendar-day" role="gridcell">10</div><div class="calendar-day" role="gridcell">11</div><div class="calendar-day" role="gridcell">12</div><div class="calendar-day" role="gridcell">13</div><div class="calendar-day" role="gridcell">14</div>
+        <div class="calendar-day calendar-sunday" role="gridcell">15</div><div class="calendar-day" role="gridcell">16</div><div class="calendar-day" role="gridcell">17</div><div class="calendar-day" role="gridcell">18</div><div class="calendar-day" role="gridcell">19</div><div class="calendar-day" role="gridcell">20</div><div class="calendar-day" role="gridcell">21</div>
+        <div class="calendar-day calendar-sunday" role="gridcell">22</div><div class="calendar-day" role="gridcell">23</div><div class="calendar-day" role="gridcell">24</div><div class="calendar-day" role="gridcell">25</div><div class="calendar-day" role="gridcell">26</div><div class="calendar-day" role="gridcell">27</div><div class="calendar-day" role="gridcell">28</div>
+        <div class="calendar-day calendar-sunday" role="gridcell">29</div><div class="calendar-day" role="gridcell">30</div><div aria-hidden="true"></div><div aria-hidden="true"></div><div aria-hidden="true"></div><div aria-hidden="true"></div><div aria-hidden="true"></div>
+      </div>
+      <p class="family-note">저희는 가까운 가족과 친지분들을 모시고<br>작은 가족 예식으로 결혼식을 진행하게 되었습니다.<br>너른 마음으로 축복해 주시면 감사하겠습니다.</p>
+    </section>
+    <section class="gallery" aria-labelledby="gallery-title">
+      <p class="section-eyebrow">GALLERY</p>
+      <h2 id="gallery-title">우리의 순간들</h2>
+      <p>사진을 누르면 크게 볼 수 있습니다.</p>
+      <div class="gallery-grid" aria-live="polite"></div>
+    </section>
+    <section class="gift" aria-labelledby="gift-title">
+      <h2 id="gift-title">마음 전하실 곳</h2>
+      <p>참석이 어려우시지만 축하의 마음을 전하고 싶으신 분들을 위해<br>계좌를 함께 안내드립니다.<br>마음만으로도 진심으로 감사드립니다.</p>
+      <!-- 아래 계좌 정보를 실제 정보로 교체해 주세요. -->
+      <div class="accordion">
+        <article class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false"><span>신랑측에게</span><span class="accordion-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></span></button>
+          <div class="accordion-panel" role="region" aria-label="신랑측 계좌 정보"><div class="accordion-panel-inner">
+            <div class="account-card"><div class="account-name"><span>신랑</span><strong>김수용</strong></div>
+              <div class="account-actions"><button class="account-copy" type="button" data-copy="카카오뱅크 3333-15-9886496"><span><small>카카오뱅크</small><span>3333-15-9886496</span></span><b class="copy-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="4" width="10" height="14" rx="2"></rect><path d="M15 18v1a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></svg></b></button>
+              <a class="kakaopay-transfer" href="https://qr.kakaopay.com/Ej7jRZbpv" target="_blank" rel="noopener noreferrer" aria-label="카카오페이로 송금">kakaopay</a></div>
+            </div>
+          </div></div>
+        </article>
+        <article class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false"><span>신부측에게</span><span class="accordion-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></span></button>
+          <div class="accordion-panel" role="region" aria-label="신부측 계좌 정보"><div class="accordion-panel-inner">
+            <div class="account-card"><div class="account-name"><span>신부</span><strong>백서혜</strong></div>
+              <div class="account-actions"><button class="account-copy" type="button" data-copy="하나은행 162-910323-57307"><span><small>하나은행</small><span>162-910323-57307</span></span><b class="copy-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="4" width="10" height="14" rx="2"></rect><path d="M15 18v1a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></svg></b></button>
+              <a class="kakaopay-transfer" href="https://qr.kakaopay.com/FEGpXMUyW" target="_blank" rel="noopener noreferrer" aria-label="카카오페이로 송금">kakaopay</a></div>
+            </div>
+          </div></div>
+        </article>
+      </div>
+    </section>
+    <section class="sharing" aria-label="청첩장 공유">
+      <button class="share-button share-kakao" type="button" data-share><span>카카오톡으로 안내장 전하기</span><span class="share-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 15V3"></path><path d="m8 7 4-4 4 4"></path><path d="M5 11v8h14v-8"></path></svg></span></button>
+      <button class="share-button share-copy" type="button" data-copy-url><span>청첩장 주소 복사하기</span><span class="share-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="4" width="10" height="14" rx="2"></rect><path d="M15 18v1a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></svg></span></button>
+    </section>
+    <footer>WITH LOVE, SOOYONG &amp; SEOHYE</footer>
+  </main>
+  <div class="gallery-modal" role="dialog" aria-modal="true" aria-label="갤러리 사진 크게 보기">
+    <button class="gallery-close" type="button" aria-label="갤러리 닫기">×</button>
+    <button class="gallery-nav gallery-prev" type="button" aria-label="이전 사진">‹</button>
+    <img src="" alt="확대된 갤러리 사진">
+    <button class="gallery-nav gallery-next" type="button" aria-label="다음 사진">›</button>
+    <span class="gallery-count" aria-live="polite"></span>
+  </div>
+  <script>
+    document.querySelectorAll('[data-copy]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const original = button.innerHTML;
+        try {
+          await navigator.clipboard.writeText(button.dataset.copy);
+          button.innerHTML = '<span>계좌번호가 복사되었습니다</span>';
+        } catch {
+          button.innerHTML = '<span>직접 복사해 주세요</span>';
+        }
+        setTimeout(() => { button.innerHTML = original; }, 1800);
+      });
+    });
+    document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.accordion-item');
+        const willOpen = !item.classList.contains('is-open');
+        document.querySelectorAll('.accordion-item').forEach((other) => {
+          other.classList.remove('is-open');
+          other.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+        });
+        if (willOpen) { item.classList.add('is-open'); trigger.setAttribute('aria-expanded', 'true'); }
+      });
+    });
+    const invitationTitle = '김수용 · 백서혜의 결혼 안내';
+    const restoreButton = (button, label) => setTimeout(() => { button.innerHTML = label; }, 1800);
+    document.querySelector('[data-share]').addEventListener('click', async (event) => {
+      const button = event.currentTarget;
+      const original = button.innerHTML;
+      if (navigator.share) {
+        try { await navigator.share({ title: invitationTitle, text: '김수용 · 백서혜의 결혼 안내', url: window.location.href }); }
+        catch (error) { if (error.name !== 'AbortError') { button.innerHTML = '<span>공유를 다시 시도해 주세요</span>'; restoreButton(button, original); } }
+      } else {
+        try { await navigator.clipboard.writeText(window.location.href); button.innerHTML = '<span>주소가 복사되었습니다</span>'; }
+        catch { button.innerHTML = '<span>주소를 직접 복사해 주세요</span>'; }
+        restoreButton(button, original);
+      }
+    });
+    document.querySelector('[data-copy-url]').addEventListener('click', async (event) => {
+      const button = event.currentTarget;
+      const original = button.innerHTML;
+      try { await navigator.clipboard.writeText(window.location.href); button.innerHTML = '<span>주소가 복사되었습니다</span>'; }
+      catch { button.innerHTML = '<span>주소를 직접 복사해 주세요</span>'; }
+      restoreButton(button, original);
+    });
+    const gallerySources = [
+      'KJW00089-0.jpg', 'KJW00451-0.jpg', 'KJW00740-0.jpg', 'KJW00779-0.jpg', 'KJW00852-0.jpg', 'KJW00969-0.jpg',
+      'KJW01168-0.jpg', 'KJW01251-0.jpg', 'KJW01335-0.jpg', 'KJW01407-0.jpg', 'KJW01480-0.jpg', 'KJW01519-0.jpg',
+      'KJW01610-0.jpg', 'KJW01680-0.jpg', 'KJW01745-0.jpg', 'KJW01789-0.jpg', 'KJW02036-0.jpg', 'KJW02268-0.jpg',
+      'KJW02476-0.jpg', 'KJW02843-0.jpg', 'KJW03058-0.jpg', 'KJW03170-0.jpg', 'KJW03390-0.jpg', 'KJW03542-0.jpg',
+      'KJW03603-0.jpg', 'KJW03674-0.jpg', 'KJW03683-0.jpg', 'KJW03700-0.jpg', 'KJW03734-0.jpg',
+      'KJW03977-0.jpg', 'KJW04013-0.jpg', 'KJW04134-0.jpg', 'KJW04205-0.jpg', 'KJW04216-0.jpg', 'KJW04294-0.jpg',
+      'KJW04417-0.jpg', 'KJW04661-0.jpg', 'KJW04708-0.jpg', 'KJW04766-0.jpg', 'KJW04872-0.jpg',
+      'KJW04907-0.jpg', 'KJW04918-0.jpg'
+    ];
+    const previewGallerySources = [...gallerySources]
+      .sort(() => Math.random() - .5)
+      .slice(0, 16);
+    document.querySelector('.gallery-grid').innerHTML = previewGallerySources.map((source, index) =>
+      `<button class="gallery-item" type="button" data-gallery-index="${gallerySources.indexOf(source)}" aria-label="갤러리 사진 ${index + 1} 크게 보기"><img src="assets/gallery/${source}" alt="김수용과 백서혜의 갤러리 사진 ${index + 1}" loading="lazy"></button>`
+    ).join('');
+    const modal = document.querySelector('.gallery-modal');
+    const modalImage = modal.querySelector('img');
+    const galleryItems = [...document.querySelectorAll('.gallery-item')];
+    const galleryCount = modal.querySelector('.gallery-count');
+    let activeGalleryIndex = 0;
+    const showGalleryImage = (index) => {
+      activeGalleryIndex = (index + gallerySources.length) % gallerySources.length;
+      modalImage.src = `assets/gallery/${gallerySources[activeGalleryIndex]}`;
+      modalImage.alt = `김수용과 백서혜의 갤러리 사진 ${activeGalleryIndex + 1}`;
+      galleryCount.textContent = `${activeGalleryIndex + 1} / ${gallerySources.length}`;
+    };
+    const closeGallery = () => { modal.classList.remove('is-open'); modalImage.src = ''; };
+    galleryItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        showGalleryImage(Number(item.dataset.galleryIndex));
+        modal.classList.add('is-open');
+      });
+    });
+    modal.querySelector('.gallery-close').addEventListener('click', closeGallery);
+    modal.querySelector('.gallery-prev').addEventListener('click', () => showGalleryImage(activeGalleryIndex - 1));
+    modal.querySelector('.gallery-next').addEventListener('click', () => showGalleryImage(activeGalleryIndex + 1));
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeGallery();
+      if (event.target === modalImage) showGalleryImage(activeGalleryIndex + (event.clientX < innerWidth / 2 ? -1 : 1));
+    });
+    document.addEventListener('keydown', (event) => {
+      if (!modal.classList.contains('is-open')) return;
+      if (event.key === 'Escape') closeGallery();
+      if (event.key === 'ArrowLeft') showGalleryImage(activeGalleryIndex - 1);
+      if (event.key === 'ArrowRight') showGalleryImage(activeGalleryIndex + 1);
+    });
+  </script>
+</body>
+</html>
