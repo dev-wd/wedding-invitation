@@ -21,7 +21,7 @@
   <style>
     @font-face { font-family:"SUIT"; font-style:normal; font-weight:100 900; font-display:swap; src:url("https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.woff2") format("woff2-variations"); }
     :root { --ink:#1F211F; --ink_2:#72756F; --paper:#C5C4BE; --line:#E5E5E2; --accent:#8A968C; --paper-deep:#f1f2f0; --text:#30382b; }
-    * { box-sizing:border-box; }
+    * { box-sizing:border-box; -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; }
     html { background:#ededeb; }
     body { margin:0; color:var(--ink); background:var(--paper); font-family:"SUIT", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif; font-weight:400; letter-spacing:-.03em; }
     body.gallery-open { position:fixed; width:100%; overflow:hidden; overscroll-behavior:none; }
@@ -268,6 +268,9 @@
   </div>
   <script type="module">
     import justifiedLayout from 'https://esm.sh/justified-layout@4.1.0';
+    ['copy', 'cut', 'paste', 'contextmenu', 'dragstart', 'selectstart'].forEach((eventName) => {
+      document.addEventListener(eventName, (event) => event.preventDefault());
+    });
     const naverMapElement = document.getElementById('naver-map');
     if (naverMapElement && window.naver?.maps) {
       const rivieraCheongdam = new window.naver.maps.LatLng(37.5248, 127.0554);
