@@ -74,8 +74,7 @@
     .gallery { padding:82px 21px 76px; background:#f5f6f4; text-align:center; }
     .gallery > p:last-of-type { margin:10px 0 27px; color:#66735f; font-size:12px; }
     .gallery-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); align-items:start; gap:5px; }
-    .gallery-grid.is-collapsed .gallery-item:nth-child(n+10) { display:none; }
-    .gallery-grid.is-collapsed.has-landscape-preview .gallery-item:nth-child(n+9) { display:none; }
+    .gallery-grid.is-collapsed .gallery-item:nth-child(n+7) { display:none; }
     .gallery-item { display:block; width:100%; min-width:0; aspect-ratio:2 / 3; margin:0; padding:0; overflow:hidden; border:0; background:transparent; cursor:zoom-in; }
     .gallery-item.is-landscape { grid-column:span 2; aspect-ratio:1.35; }
     .gallery-item img { width:100%; height:100%; display:block; object-fit:cover; object-position:center; }
@@ -310,7 +309,6 @@
     galleryGrid.innerHTML = gallerySources.map((source, index) =>
       `<button class="gallery-item${landscapeSources.has(source) ? ' is-landscape' : ''}" type="button" data-gallery-index="${index}" aria-label="갤러리 사진 ${index + 1} 크게 보기"><img src="assets/gallery/${source}" alt="김수용과 백서혜의 갤러리 사진 ${index + 1}" loading="lazy"></button>`
     ).join('');
-    galleryGrid.classList.toggle('has-landscape-preview', gallerySources.slice(0, 9).some((source) => landscapeSources.has(source)));
     const galleryMore = document.querySelector('.gallery-more');
     galleryMore.addEventListener('click', () => {
       const isExpanded = galleryGrid.classList.toggle('is-expanded');
