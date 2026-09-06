@@ -57,11 +57,16 @@
     .ceremony-info { margin:48px 0 0; padding-top:34px; border-top:1px solid var(--line); color:#3f493a; }
     .ceremony-label { margin:0 0 12px; color:var(--accent); font-size:11px; font-weight:500; letter-spacing:.16em; }
     .ceremony-detail { margin:0; font-size:14px; font-weight:500; line-height:2; word-break:keep-all; }
-    .countdown { display:grid; grid-template-columns:repeat(4, 1fr); gap:7px; margin:0 auto; padding:18px 13px; border-radius:12px; background:#f4f6f0; }
-    .countdown-unit { min-width:0; }
-    .countdown-value { display:block; color:#3f493a; font-family:"Cormorant Garamond", serif; font-size:27px; font-weight:500; line-height:1; letter-spacing:.03em; }
-    .countdown-label { display:block; margin-top:7px; color:#7d8874; font-size:9px; font-weight:500; letter-spacing:.1em; }
-    .countdown-message { margin:28px 0 12px; color:#788371; font-size:13px; font-weight:500; letter-spacing:.04em; }
+    .location { padding:74px 32px 78px; background:#f5f6f4; text-align:center; }
+    .location h2 { margin:0; color:#222; font-size:19px; font-weight:400; letter-spacing:.08em; }
+    .location-detail { margin:22px 0 26px; color:#53604e; font-size:13px; line-height:1.9; }
+    .location-detail strong { display:block; color:#30382b; font-size:15px; font-weight:500; }
+    .naver-map-link { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:17px 18px; border-radius:12px; background:#fff; color:#30382b; text-align:left; text-decoration:none; box-shadow:0 3px 10px rgba(53,62,43,.08); }
+    .naver-map-link span { display:block; }
+    .naver-map-link strong { color:#03c75a; font-size:11px; font-weight:700; letter-spacing:.07em; }
+    .naver-map-link small { margin-top:3px; color:#6f786a; font-size:12px; }
+    .naver-map-icon { display:grid; place-items:center; flex:0 0 auto; width:34px; height:34px; border-radius:50%; background:#03c75a; color:#fff; }
+    .naver-map-icon svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.8; }
     .gallery { padding:82px 21px 76px; background:#f5f6f4; text-align:center; }
     .gallery > p:last-of-type { margin:10px 0 27px; color:#66735f; font-size:12px; }
     .gallery-grid { display:grid; grid-template-columns:1.16fr .84fr; grid-auto-rows:154px; gap:5px; }
@@ -183,13 +188,12 @@
         <p class="ceremony-label">예식안내</p>
         <p class="ceremony-detail">2026년 11월 7일 토요일 오후 12시 30분<br>리베라 청담 15층 로즈홀</p>
       </div>
-      <p class="countdown-message">수용 ♥ 서혜 결혼식까지</p>
-      <div class="countdown" aria-label="결혼식까지 남은 시간" aria-live="polite">
-        <div class="countdown-unit"><strong class="countdown-value" data-count="days">0</strong><span class="countdown-label">DAYS</span></div>
-        <div class="countdown-unit"><strong class="countdown-value" data-count="hours">00</strong><span class="countdown-label">HOURS</span></div>
-        <div class="countdown-unit"><strong class="countdown-value" data-count="minutes">00</strong><span class="countdown-label">MINUTES</span></div>
-        <div class="countdown-unit"><strong class="countdown-value" data-count="seconds">00</strong><span class="countdown-label">SECONDS</span></div>
-      </div>
+    </section>
+    <section class="location" aria-labelledby="location-title">
+      <p class="section-eyebrow">LOCATION</p>
+      <h2 id="location-title">오시는 길</h2>
+      <p class="location-detail"><strong>리베라 청담 15층 로즈홀</strong>서울특별시 강남구 영동대로 737</p>
+      <a class="naver-map-link" href="https://map.naver.com/p/search/%ED%98%B8%ED%85%94%20%EB%A6%AC%EB%B2%A0%EB%9D%BC%20%EC%B2%AD%EB%8B%B4" target="_blank" rel="noopener noreferrer"><span><strong>NAVER MAP</strong><small>리베라 청담 지도 보기</small></span><span class="naver-map-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.1 7-12a7 7 0 1 0-14 0c0 6.9 7 12 7 12Z"></path><circle cx="12" cy="9" r="2.4"></circle></svg></span></a>
     </section>
     <section class="gallery" aria-labelledby="gallery-title">
       <p class="section-eyebrow">GALLERY</p>
@@ -281,23 +285,6 @@
       catch { button.innerHTML = '<span>주소를 직접 복사해 주세요</span>'; }
       restoreButton(button, original);
     });
-    const countdownTarget = new Date('2026-11-07T12:30:00+09:00').getTime();
-    const countdownFields = Object.fromEntries([...document.querySelectorAll('[data-count]')].map((field) => [field.dataset.count, field]));
-    const updateCountdown = () => {
-      let remaining = Math.max(0, countdownTarget - Date.now());
-      const days = Math.floor(remaining / 86400000);
-      remaining %= 86400000;
-      const hours = Math.floor(remaining / 3600000);
-      remaining %= 3600000;
-      const minutes = Math.floor(remaining / 60000);
-      const seconds = Math.floor((remaining % 60000) / 1000);
-      countdownFields.days.textContent = days;
-      countdownFields.hours.textContent = String(hours).padStart(2, '0');
-      countdownFields.minutes.textContent = String(minutes).padStart(2, '0');
-      countdownFields.seconds.textContent = String(seconds).padStart(2, '0');
-    };
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
     const gallerySources = [
       'KJW00089-0.jpg', 'KJW00451-0.jpg', 'KJW00740-0.jpg', 'KJW00779-0.jpg', 'KJW00852-0.jpg', 'KJW00969-0.jpg',
       'KJW01168-0.jpg', 'KJW01251-0.jpg', 'KJW01335-0.jpg', 'KJW01407-0.jpg', 'KJW01480-0.jpg', 'KJW01519-0.jpg',
