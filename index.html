@@ -404,10 +404,28 @@
     modal.querySelector('.gallery-close').addEventListener('click', closeGallery);
     modal.querySelector('.gallery-prev').addEventListener('click', () => showGalleryImage(activeGalleryIndex - 1));
     modal.querySelector('.gallery-next').addEventListener('click', () => showGalleryImage(activeGalleryIndex + 1));
+    let ignoreModalTapUntil = 0;
     modal.addEventListener('click', (event) => {
+      if (Date.now() < ignoreModalTapUntil) return;
       if (event.target === modal) closeGallery();
       if (event.target === modalImage) showGalleryImage(activeGalleryIndex + (event.clientX < innerWidth / 2 ? -1 : 1));
     });
+    let swipeStartX = 0;
+    let swipeStartY = 0;
+    modal.addEventListener('touchstart', (event) => {
+      if (event.touches.length !== 1) return;
+      swipeStartX = event.touches[0].clientX;
+      swipeStartY = event.touches[0].clientY;
+    }, { passive:true });
+    modal.addEventListener('touchend', (event) => {
+      if (!swipeStartX || event.changedTouches.length !== 1) return;
+      const swipeX = event.changedTouches[0].clientX - swipeStartX;
+      const swipeY = event.changedTouches[0].clientY - swipeStartY;
+      swipeStartX = 0;
+      if (Math.abs(swipeX) < 42 || Math.abs(swipeX) <= Math.abs(swipeY)) return;
+      ignoreModalTapUntil = Date.now() + 450;
+      showGalleryImage(activeGalleryIndex + (swipeX < 0 ? 1 : -1));
+    }, { passive:true });
     modalImage.addEventListener('dblclick', (event) => event.preventDefault());
     modal.addEventListener('gesturestart', (event) => event.preventDefault(), { passive:false });
     document.addEventListener('keydown', (event) => {
