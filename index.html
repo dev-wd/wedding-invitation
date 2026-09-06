@@ -62,7 +62,7 @@
     .location-detail { margin:22px 0 26px; color:#53604e; font-size:13px; line-height:1.9; }
     .location-detail strong { display:block; color:#30382b; font-size:15px; font-weight:500; }
     .location-map { height:250px; margin:0 0 13px; overflow:hidden; border-radius:12px; background:#e8ece5; box-shadow:0 3px 10px rgba(53,62,43,.08); }
-    #naver-map { width:100%; height:100%; }
+    .location-map iframe { width:100%; height:100%; border:0; }
     .parking-info { margin-top:13px; padding:19px 18px; border-radius:12px; background:#fff; text-align:left; box-shadow:0 3px 10px rgba(53,62,43,.08); }
     .parking-info p { margin:0; }
     .parking-label { color:#7a8672; font-size:11px; font-weight:500; letter-spacing:.1em; }
@@ -75,7 +75,9 @@
     .gallery > p:last-of-type { margin:10px 0 27px; color:#66735f; font-size:12px; }
     .gallery-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); align-items:start; gap:5px; }
     .gallery-grid.is-collapsed .gallery-item:nth-child(n+10) { display:none; }
+    .gallery-grid.is-collapsed.has-landscape-preview .gallery-item:nth-child(n+9) { display:none; }
     .gallery-item { display:block; width:100%; min-width:0; margin:0; padding:0; overflow:hidden; border:0; background:transparent; cursor:zoom-in; }
+    .gallery-item.is-landscape { grid-column:span 2; }
     .gallery-item img { width:100%; height:auto; display:block; object-fit:contain; }
     .gallery-more { display:block; min-width:138px; margin:22px auto 0; padding:11px 18px; border:1px solid var(--line); border-radius:22px; background:#fff; color:var(--ink); font:500 12px "SUIT", sans-serif; letter-spacing:.04em; cursor:pointer; }
     .gallery-modal { position:fixed; z-index:10; inset:0; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(20,18,15,.92); }
@@ -195,7 +197,7 @@
       <p class="section-eyebrow">LOCATION</p>
       <h2 id="location-title">오시는 길</h2>
       <p class="location-detail"><strong>리베라 청담 15층 로즈홀</strong>서울특별시 강남구 영동대로 737</p>
-      <div class="location-map"><div id="naver-map" role="img" aria-label="리베라 청담 위치 지도"></div></div>
+      <div class="location-map"><iframe title="리베라 청담 위치 지도" src="https://www.google.com/maps?q=%ED%98%B8%ED%85%94%20%EB%A6%AC%EB%B2%A0%EB%9D%BC%20%EC%B2%AD%EB%8B%B4&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
       <div class="transport-info"><p class="transport-label">오시는 길</p><p class="transport-detail">지하철 7호선 청담역 12·13번 출구에서<br>도보 약 5분 거리입니다.<br><br>자가용 이용 시 내비게이션에<br>‘호텔 리베라 청담’을 검색해 주세요.</p></div>
       <div class="parking-info">
         <p class="parking-label">PARKING</p>
@@ -248,21 +250,7 @@
     <button class="gallery-nav gallery-next" type="button" aria-label="다음 사진">›</button>
     <span class="gallery-count" aria-live="polite"></span>
   </div>
-  <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=ytq1lzkzc4"></script>
   <script>
-    const rivieraCheongdam = new naver.maps.LatLng(37.5238, 127.0543);
-    const naverMap = new naver.maps.Map('naver-map', {
-      center: rivieraCheongdam,
-      zoom: 16,
-      zoomControl: true,
-      zoomControlOptions: { position: naver.maps.Position.TOP_RIGHT }
-    });
-    new naver.maps.Marker({
-      position: rivieraCheongdam,
-      map: naverMap,
-      title: '리베라 청담'
-    });
-
     document.querySelectorAll('[data-copy]').forEach((button) => {
       button.addEventListener('click', async () => {
         const original = button.innerHTML;
@@ -317,10 +305,12 @@
       'KJW04417-0.jpg', 'KJW04661-0.jpg', 'KJW04708-0.jpg', 'KJW04766-0.jpg', 'KJW04872-0.jpg',
       'KJW04907-0.jpg', 'KJW04918-0.jpg'
     ];
+    const landscapeSources = new Set(['KJW00852-0.jpg', 'KJW01251-0.jpg', 'KJW01407-0.jpg', 'KJW01680-0.jpg', 'KJW02476-0.jpg', 'KJW02843-0.jpg', 'KJW03390-0.jpg', 'KJW03683-0.jpg', 'KJW04216-0.jpg']);
     const galleryGrid = document.querySelector('.gallery-grid');
     galleryGrid.innerHTML = gallerySources.map((source, index) =>
-      `<button class="gallery-item" type="button" data-gallery-index="${index}" aria-label="갤러리 사진 ${index + 1} 크게 보기"><img src="assets/gallery/${source}" alt="김수용과 백서혜의 갤러리 사진 ${index + 1}" loading="lazy"></button>`
+      `<button class="gallery-item${landscapeSources.has(source) ? ' is-landscape' : ''}" type="button" data-gallery-index="${index}" aria-label="갤러리 사진 ${index + 1} 크게 보기"><img src="assets/gallery/${source}" alt="김수용과 백서혜의 갤러리 사진 ${index + 1}" loading="lazy"></button>`
     ).join('');
+    galleryGrid.classList.toggle('has-landscape-preview', gallerySources.slice(0, 9).some((source) => landscapeSources.has(source)));
     const galleryMore = document.querySelector('.gallery-more');
     galleryMore.addEventListener('click', () => {
       const isExpanded = galleryGrid.classList.toggle('is-expanded');
