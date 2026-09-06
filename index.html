@@ -73,17 +73,12 @@
     .transport-detail { color:#465040; font-size:13px; line-height:1.75; }
     .gallery { padding:82px 21px 76px; background:#f5f6f4; text-align:center; }
     .gallery > p:last-of-type { margin:10px 0 27px; color:#66735f; font-size:12px; }
-    .gallery-grid { display:grid; grid-template-columns:1.16fr .84fr; grid-auto-rows:154px; gap:5px; }
-    .gallery-item { min-width:0; padding:0; overflow:hidden; border:0; background:#c9d5af; cursor:zoom-in; }
-    .gallery-item:first-child { grid-row:span 2; }
-    .gallery-item:nth-child(4) { grid-column:span 2; }
-    .gallery-item img { width:100%; height:100%; display:block; object-fit:cover; transition:transform .45s ease; }
-    .gallery-item:hover img { transform:scale(1.045); }
-    .gallery-item:nth-child(1) img { object-position:50% 50%; }
-    .gallery-item:nth-child(2) img { object-position:68% 36%; }
-    .gallery-item:nth-child(3) img { object-position:31% 59%; }
-    .gallery-item:nth-child(4) img { object-position:50% 76%; }
-    .gallery-item:nth-child(5) img { object-position:50% 22%; }
+    .gallery-grid { columns:2; column-gap:6px; overflow:hidden; transition:max-height .35s ease; }
+    .gallery-grid.is-collapsed { max-height:min(94vw, calc(100dvh - 300px)); }
+    .gallery-grid.is-expanded { max-height:none; }
+    .gallery-item { display:block; width:100%; min-width:0; margin:0 0 6px; padding:0; overflow:hidden; break-inside:avoid; border:0; background:transparent; cursor:zoom-in; }
+    .gallery-item img { width:100%; height:auto; display:block; object-fit:contain; }
+    .gallery-more { display:block; min-width:138px; margin:22px auto 0; padding:11px 18px; border:1px solid var(--line); border-radius:22px; background:#fff; color:var(--ink); font:500 12px "SUIT", sans-serif; letter-spacing:.04em; cursor:pointer; }
     .gallery-modal { position:fixed; z-index:10; inset:0; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(20,18,15,.92); }
     .gallery-modal.is-open { display:flex; }
     .gallery-modal img { max-width:100%; max-height:88vh; object-fit:contain; }
@@ -208,7 +203,8 @@
       <p class="section-eyebrow">GALLERY</p>
       <h2 id="gallery-title">우리의 순간들</h2>
       <p>사진을 누르면 크게 볼 수 있습니다.</p>
-      <div class="gallery-grid" aria-live="polite"></div>
+      <div class="gallery-grid is-collapsed" aria-live="polite"></div>
+      <button class="gallery-more" type="button" aria-expanded="false">사진 더보기</button>
     </section>
     <section class="gift" aria-labelledby="gift-title">
       <h2 id="gift-title">마음 전하실 곳</h2>
@@ -304,12 +300,18 @@
       'KJW04417-0.jpg', 'KJW04661-0.jpg', 'KJW04708-0.jpg', 'KJW04766-0.jpg', 'KJW04872-0.jpg',
       'KJW04907-0.jpg', 'KJW04918-0.jpg'
     ];
-    const previewGallerySources = [...gallerySources]
-      .sort(() => Math.random() - .5)
-      .slice(0, 16);
-    document.querySelector('.gallery-grid').innerHTML = previewGallerySources.map((source, index) =>
-      `<button class="gallery-item" type="button" data-gallery-index="${gallerySources.indexOf(source)}" aria-label="갤러리 사진 ${index + 1} 크게 보기"><img src="assets/gallery/${source}" alt="김수용과 백서혜의 갤러리 사진 ${index + 1}" loading="lazy"></button>`
+    const galleryGrid = document.querySelector('.gallery-grid');
+    galleryGrid.innerHTML = gallerySources.map((source, index) =>
+      `<button class="gallery-item" type="button" data-gallery-index="${index}" aria-label="갤러리 사진 ${index + 1} 크게 보기"><img src="assets/gallery/${source}" alt="김수용과 백서혜의 갤러리 사진 ${index + 1}" loading="lazy"></button>`
     ).join('');
+    const galleryMore = document.querySelector('.gallery-more');
+    galleryMore.addEventListener('click', () => {
+      const isExpanded = galleryGrid.classList.toggle('is-expanded');
+      galleryGrid.classList.toggle('is-collapsed', !isExpanded);
+      galleryMore.setAttribute('aria-expanded', String(isExpanded));
+      galleryMore.textContent = isExpanded ? '사진 접기' : '사진 더보기';
+      if (!isExpanded) galleryGrid.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
     const modal = document.querySelector('.gallery-modal');
     const modalImage = modal.querySelector('img');
     const galleryItems = [...document.querySelectorAll('.gallery-item')];
