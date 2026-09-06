@@ -24,6 +24,7 @@
     * { box-sizing:border-box; }
     html { background:#ededeb; }
     body { margin:0; color:var(--ink); background:var(--paper); font-family:"SUIT", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif; font-weight:400; letter-spacing:-.03em; }
+    body.gallery-open { position:fixed; width:100%; overflow:hidden; overscroll-behavior:none; }
     .invite { width:min(100%, 520px); min-height:100vh; margin:0 auto; background:var(--paper); overflow:hidden; box-shadow:0 0 36px rgba(42,54,35,.13); }
     .hero { position:relative; height:min(190vw, 960px); min-height:760px; background:url("assets/gallery/KJW03662-0.jpg") center center / cover no-repeat; }
     .hero-copy { position:absolute; z-index:1; top:20%; inset-inline:28px; color:#fffdf9; text-align:center; text-shadow:0 1px 12px rgba(0,0,0,.26); }
@@ -394,11 +395,24 @@
       modalImage.alt = `김수용과 백서혜의 갤러리 사진 ${activeGalleryIndex + 1}`;
       galleryCount.textContent = `${activeGalleryIndex + 1} / ${gallerySources.length}`;
     };
-    const closeGallery = () => { modal.classList.remove('is-open'); modalImage.src = ''; };
+    let galleryScrollPosition = 0;
+    const openGallery = (index) => {
+      galleryScrollPosition = window.scrollY;
+      showGalleryImage(index);
+      document.body.style.top = `-${galleryScrollPosition}px`;
+      document.body.classList.add('gallery-open');
+      modal.classList.add('is-open');
+    };
+    const closeGallery = () => {
+      modal.classList.remove('is-open');
+      modalImage.src = '';
+      document.body.classList.remove('gallery-open');
+      document.body.style.top = '';
+      window.scrollTo(0, galleryScrollPosition);
+    };
     galleryItems.forEach((item) => {
       item.addEventListener('click', () => {
-        showGalleryImage(Number(item.dataset.galleryIndex));
-        modal.classList.add('is-open');
+        openGallery(Number(item.dataset.galleryIndex));
       });
     });
     modal.querySelector('.gallery-close').addEventListener('click', closeGallery);
