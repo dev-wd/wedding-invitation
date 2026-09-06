@@ -61,6 +61,8 @@
     .location h2 { margin:0; color:#222; font-size:19px; font-weight:400; letter-spacing:.08em; }
     .location-detail { margin:22px 0 26px; color:#53604e; font-size:13px; line-height:1.9; }
     .location-detail strong { display:block; color:#30382b; font-size:15px; font-weight:500; }
+    .location-map { height:250px; margin:0 0 13px; overflow:hidden; border-radius:12px; background:#e8ece5; box-shadow:0 3px 10px rgba(53,62,43,.08); }
+    .location-map iframe { width:100%; height:100%; border:0; }
     .naver-map-link { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:17px 18px; border-radius:12px; background:#fff; color:#30382b; text-align:left; text-decoration:none; box-shadow:0 3px 10px rgba(53,62,43,.08); }
     .naver-map-link span { display:block; }
     .naver-map-link strong { color:#03c75a; font-size:11px; font-weight:700; letter-spacing:.07em; }
@@ -72,6 +74,10 @@
     .parking-label { color:#7a8672; font-size:11px; font-weight:500; letter-spacing:.1em; }
     .parking-detail { margin-top:7px!important; color:#30382b; font-size:13px; font-weight:500; }
     .parking-link { display:inline-block; margin-top:13px; color:#03a94f; font-size:12px; font-weight:500; text-decoration:none; }
+    .transport-info { margin-top:13px; padding:18px; border-radius:12px; background:#fff; text-align:left; box-shadow:0 3px 10px rgba(53,62,43,.08); }
+    .transport-info p { margin:0; }
+    .transport-label { margin-bottom:7px!important; color:#7a8672; font-size:11px; font-weight:500; letter-spacing:.1em; }
+    .transport-detail { color:#465040; font-size:13px; line-height:1.75; }
     .gallery { padding:82px 21px 76px; background:#f5f6f4; text-align:center; }
     .gallery > p:last-of-type { margin:10px 0 27px; color:#66735f; font-size:12px; }
     .gallery-grid { display:grid; grid-template-columns:1.16fr .84fr; grid-auto-rows:154px; gap:5px; }
@@ -198,7 +204,9 @@
       <p class="section-eyebrow">LOCATION</p>
       <h2 id="location-title">오시는 길</h2>
       <p class="location-detail"><strong>리베라 청담 15층 로즈홀</strong>서울특별시 강남구 영동대로 737</p>
+      <div class="location-map"><iframe title="리베라 청담 위치 지도" src="https://www.google.com/maps?q=%ED%98%B8%ED%85%94%20%EB%A6%AC%EB%B2%A0%EB%9D%BC%20%EC%B2%AD%EB%8B%B4&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
       <a class="naver-map-link" href="https://map.naver.com/p/search/%ED%98%B8%ED%85%94%20%EB%A6%AC%EB%B2%A0%EB%9D%BC%20%EC%B2%AD%EB%8B%B4" target="_blank" rel="noopener noreferrer"><span><strong>NAVER MAP</strong><small>리베라 청담 지도 보기</small></span><span class="naver-map-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.1 7-12a7 7 0 1 0-14 0c0 6.9 7 12 7 12Z"></path><circle cx="12" cy="9" r="2.4"></circle></svg></span></a>
+      <div class="transport-info"><p class="transport-label">대중교통</p><p class="transport-detail">7호선 청담역 12·13번 출구에서<br>도보 약 5분 거리입니다.</p></div>
       <div class="parking-info">
         <p class="parking-label">PARKING</p>
         <p class="parking-detail">하객 5시간 무료 주차</p>
