@@ -312,7 +312,7 @@
       const visibleCount = galleryGrid.classList.contains('is-expanded') ? gallerySources.length : 6;
       const layout = justifiedLayout(
         gallerySources.slice(0, visibleCount).map((source) => landscapeSources.has(source) ? 1600 / 1066 : 1066 / 1600),
-        { containerWidth: galleryGrid.clientWidth, targetRowHeight: 130, targetRowHeightTolerance: 0.25, boxSpacing: 5, containerPadding: 0, showWidows: true }
+        { containerWidth: galleryGrid.clientWidth, targetRowHeight: galleryGrid.clientWidth * 0.366, targetRowHeightTolerance: 0.25, boxSpacing: 5, containerPadding: 0, showWidows: true }
       );
       galleryGrid.style.height = `${layout.containerHeight}px`;
       [...galleryGrid.querySelectorAll('.gallery-item')].forEach((item, index) => {
