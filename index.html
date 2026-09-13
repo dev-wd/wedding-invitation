@@ -39,7 +39,8 @@
     .intro-ring { display:block; width:50px; max-width:58%; height:auto; margin:0 auto 25px; }
     .intro p { margin:0; font-size:16px; line-height:2.15; word-break:keep-all; }
     .intro p + p { margin-top:30px; }
-    .intro-label { margin:0 0 13px!important; color:var(--accent); font-size:12px!important; font-weight:500; letter-spacing:.16em; }
+    .section-label { margin:0; color:#8A968C!important; font-family:"Noto Serif CJK KR Regular", "Noto Serif KR", serif!important; font-size:18px!important; font-weight:400!important; line-height:1.4; letter-spacing:.08em; }
+    .intro-label.section-label { margin:0 0 13px!important; }
     .intro-title { margin:0; color:var(--ink); font-size:24px; font-weight:500; letter-spacing:-.04em; }
     .intro-message { margin-top:34px!important; color:var(--text); }
     .intro-family { display:grid; grid-template-columns:1fr; gap:18px; margin-top:38px; padding:26px 12px 0; border-top:1px solid var(--line); }
@@ -51,8 +52,8 @@
     .couple-photo { height:min(138vw, 680px); margin:0; overflow:hidden; background:#c9d5af; }
     .couple-photo img { width:100%; height:100%; display:block; object-fit:cover; object-position:center 47%; filter:saturate(.8) sepia(.08); }
     .about { padding:80px 40px; background:#F6F6F4; text-align:center; }
-    .section-eyebrow { margin:0 0 13px; color:var(--accent); font-size:11px; font-weight:500; letter-spacing:.15em; }
-    .about-title { margin:0; color:#111; font-family:"Cormorant Garamond", serif; font-size:36px; font-weight:400; letter-spacing:.06em; }
+    .section-eyebrow.section-label { margin:0 0 13px; }
+    .about-title.section-label { margin:0; }
     .gallery h2 { margin:0; font-size:19px; font-weight:400; letter-spacing:.08em; }
     .about-intro { margin:25px 0 28px; color:#111; font-size:14px; line-height:1.85; }
     .about-intro p { margin:0; }
@@ -66,7 +67,7 @@
     .profile-name strong { margin-right:5px; color:#a0b575; font-weight:600; }
     .profile-bio { margin:0; color:#222; font-size:11px; line-height:1.7; white-space:pre-line; word-break:keep-all; }
     .announcement { margin:0; padding:68px 32px 63px; background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); text-align:center; }
-    .announcement .label { margin:0 0 29px; color:#111; font-family:"Cormorant Garamond", serif; font-size:35px; font-style:normal; font-weight:400; letter-spacing:.08em; }
+    .announcement .section-label { margin:0 0 29px; }
     .date-korean { margin:0; color:#222; font-size:14px; line-height:1.6; }
     .date-english { margin:6px 0 45px; color:#6f7569; font-size:12px; font-weight:400; letter-spacing:.02em; }
     .calendar-description { margin:6px 0 45px; color:#222; font-size:16px!important; font-weight:400; line-height:1.6; letter-spacing:0; }
@@ -183,7 +184,7 @@
       </div>
     </section>
     <section class="intro">
-      <p class="intro-label">INVITATION</p>
+      <h2 class="intro-label section-label">INVITATION</h2>
       <h2 class="intro-title">소중한 분들을 초대합니다.</h2>
       <p class="intro-message">다른 공간에서 자라온 저희 두 사람이<br>이제는 하나의 삶이 되어<br><br>서로의 하루를 가장 가까이에서 바라보며<br>함께 걸어갈 한 걸음을 시작합니다.<br><br>저희 두 사람의 새로운 시작에 함께해 주신다면<br>큰 기쁨과 감사함으로 간직하겠습니다.</p>
       <div class="intro-family" aria-label="신랑 신부 가족 소개">
@@ -196,7 +197,7 @@
       <img src="assets/gallery/KJW04505-0.jpg" alt="김수용과 백서혜의 커플 사진">
     </figure>
     <section class="about" aria-labelledby="about-title">
-      <h2 class="about-title" id="about-title">ABOUT US</h2>
+      <h2 class="about-title section-label" id="about-title">ABOUT US</h2>
       <div class="about-intro p3"><p>저희를 소개합니다</p></div>
       <!-- 각 프로필 사진과 소개 문구는 실제 정보로 교체해 주세요. -->
       <div class="profile-list">
@@ -215,7 +216,7 @@
       </div>
     </section>
     <section class="announcement">
-      <p class="label">WEDDING DAY</p>
+      <h2 class="section-label">WEDDING DAY</h2>
       <p class="date-korean">2026년 11월 7일</p>
       <p class="calendar-description">토요일 낮 12:30</p>
       <div class="calendar" role="grid" aria-label="2026년 11월 달력">
@@ -228,7 +229,7 @@
       </div>
     </section>
     <section class="location" id="location" aria-labelledby="location-title">
-      <p class="section-eyebrow">LOCATION</p>
+      <h2 class="section-eyebrow section-label">LOCATION</h2>
       <h2 id="location-title">오시는 길</h2>
       <p class="location-name">청담 호텔 리베라 15층 로즈홀</p>
       <p class="location-detail p3">서울특별시 강남구 영동대로 737 (청담동)<button class="address-copy" type="button" aria-label="주소 복사" data-copy-address><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="4" width="10" height="14" rx="2"></rect><path d="M15 18v1a2 2 0 0 1-2 2H7a2 2 0 0 1 2-2V9a2 2 0 0 1 2-2h2"></path></svg></button></p>
@@ -245,7 +246,7 @@
       </div>
     </section>
     <section class="gallery" aria-labelledby="gallery-title">
-      <p class="section-eyebrow">GALLERY</p>
+      <h2 class="section-eyebrow section-label">GALLERY</h2>
       <h2 id="gallery-title">웨딩 갤러리</h2>
       <p class="p3">사진을 누르면 크게 볼 수 있습니다.</p>
       <div class="gallery-grid is-collapsed" aria-live="polite"></div>
