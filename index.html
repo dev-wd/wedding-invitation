@@ -80,8 +80,8 @@
     .ceremony-detail { margin:0; font-size:14px; font-weight:500; line-height:2; word-break:keep-all; }
     .location { padding:74px 32px 78px; background:#f5f6f4; text-align:center; }
     .location h2 { margin:0; color:#222; font-size:19px; font-weight:400; letter-spacing:.08em; }
-    .location-detail { margin:22px 0 26px; color:#53604e; font-size:13px; line-height:1.9; }
-    .location-detail strong { display:block; color:#30382b; font-size:15px; font-weight:500; }
+    .location-name { margin:22px 0 5px; color:var(--ink); font-size:16px; font-weight:500; line-height:1.9; }
+    .location-detail { margin:0 0 26px; color:#53604e; font-size:13px; line-height:1.9; }
     .address-copy { display:inline-grid; width:1em; height:1em; margin-left:.3em; padding:0; border:0; background:transparent; color:currentColor; vertical-align:-.11em; cursor:pointer; }
     .address-copy svg { width:100%; height:100%; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.7; }
     .copy-toast { position:fixed; z-index:30; bottom:calc(28px + env(safe-area-inset-bottom)); left:50%; padding:11px 16px; border-radius:20px; background:var(--ink); color:#fff; font:500 14px/1 "SUIT", sans-serif; letter-spacing:-.02em; opacity:0; pointer-events:none; transform:translate(-50%, 10px); transition:opacity .18s ease, transform .18s ease; }
@@ -227,7 +227,8 @@
     <section class="location" id="location" aria-labelledby="location-title">
       <p class="section-eyebrow">LOCATION</p>
       <h2 id="location-title">오시는 길</h2>
-      <p class="location-detail p3"><strong>주소</strong>서울특별시 강남구 영동대로 737 (청담동)<button class="address-copy" type="button" aria-label="주소 복사" data-copy-address><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="4" width="10" height="14" rx="2"></rect><path d="M15 18v1a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></svg></button></p>
+      <p class="location-name">청담 호텔 리베라 15층 로즈홀</p>
+      <p class="location-detail p3">서울특별시 강남구 영동대로 737 (청담동)<button class="address-copy" type="button" aria-label="주소 복사" data-copy-address><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="4" width="10" height="14" rx="2"></rect><path d="M15 18v1a2 2 0 0 1-2 2H7a2 2 0 0 1 2-2V9a2 2 0 0 1 2-2h2"></path></svg></button></p>
       <div class="location-map" role="img" aria-label="리베라 청담 위치 지도"><div id="naver-map"></div></div>
       <div class="transport-info">
         <p class="transport-label">지하철</p>
