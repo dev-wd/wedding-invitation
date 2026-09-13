@@ -38,6 +38,13 @@
     .intro-ring { display:block; width:50px; max-width:58%; height:auto; margin:0 auto 25px; }
     .intro p { margin:0; font-size:16px; line-height:2.15; word-break:keep-all; }
     .intro p + p { margin-top:30px; }
+    .intro-label { margin:0 0 13px!important; color:var(--accent); font-size:12px!important; font-weight:500; letter-spacing:.16em; }
+    .intro-title { margin:0; color:var(--ink); font-size:24px; font-weight:500; letter-spacing:-.04em; }
+    .intro-message { margin-top:34px!important; color:var(--text); }
+    .intro-family { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px; margin-top:38px; padding-top:26px; border-top:1px solid var(--line); }
+    .intro-family p { margin:0!important; color:var(--text); font-size:14px!important; line-height:1.75!important; }
+    .intro-family span, .intro-family strong { display:block; }
+    .intro-family strong { margin-top:4px; color:var(--ink); font-size:17px; font-weight:600; }
     .names { margin-top:35px!important; font-size:18px!important; letter-spacing:.1em; }
     .names span { padding:0 12px; color:var(--accent); font-size:19px; font-weight:300; vertical-align:0; }
     .couple-photo { height:min(138vw, 680px); margin:0; overflow:hidden; background:#c9d5af; }
@@ -171,10 +178,13 @@
       <p class="date">2026.11.07 12:30<br>호텔 리베라 15층 로즈홀</p>
     </section>
     <section class="intro">
-      <img class="intro-ring" src="assets/wedding-rings.png" alt="서로의 이름이 새겨진 두 개의 반지">
-      <p>서로의 하루를 가장 가까이에서 바라보며<br>함께 걸어갈 한 걸음을 시작합니다.</p>
-      <p>기쁜 날의 마음을 먼저 전합니다.<br>따뜻한 마음으로 축복해 주세요.</p>
-      <p class="names">김수용 <span>&amp;</span> 백서혜</p>
+      <p class="intro-label">INVITATION</p>
+      <h2 class="intro-title">소중한 분들을 초대합니다.</h2>
+      <p class="intro-message">다른 공간에서 자라온 저희 두 사람이<br>이제는 하나의 삶이 되어<br><br>서로의 하루를 가장 가까이에서 바라보며<br>함께 걸어갈 한 걸음을 시작합니다.<br><br>저희 두 사람의 새로운 시작에 함께해 주신다면<br>큰 기쁨과 감사함으로 간직하겠습니다.</p>
+      <div class="intro-family" aria-label="신랑 신부 가족 소개">
+        <p><span>김상락 · 정진우의 아들</span><strong>김수용</strong></p>
+        <p><span>정국헌의 딸</span><strong>백서혜</strong></p>
+      </div>
     </section>
     <figure class="couple-photo">
       <!-- 사진을 바꾸려면 아래 src를 새 사진 경로로 바꿔 주세요. -->
