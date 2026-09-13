@@ -30,6 +30,7 @@
     .hero-copy { position:absolute; z-index:1; top:20%; inset-inline:28px; color:#fffdf9; text-align:center; text-shadow:0 1px 12px rgba(0,0,0,.26); }
     .kicker { margin:0 0 13px; font-size:12px; letter-spacing:.16em; }
     h1 { width:max-content; max-width:100%; margin:0 auto; overflow:hidden; font-family:"Nanum Pen Script", cursive; font-size:58px; line-height:1.15; font-weight:400; letter-spacing:.035em; white-space:nowrap; clip-path:inset(0 100% 0 0); animation:handwrite 1.7s cubic-bezier(.2,.75,.25,1) .2s forwards; }
+    .hero-name-animation { display:block; width:min(100%, 360px); height:auto; margin:0 auto; }
     .date { position:absolute; z-index:1; bottom:4%; left:50%; width:max-content; max-width:calc(100% - 56px); overflow:hidden; color:#fffdf9; font-family:"SUIT", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif; font-size:17px; font-weight:500; letter-spacing:.04em; white-space:nowrap; text-align:center; text-shadow:0 1px 12px rgba(0,0,0,.26); transform:translateX(-50%); clip-path:inset(0 100% 0 0); animation:handwrite 1.45s cubic-bezier(.2,.75,.25,1) 1.55s forwards; }
     @keyframes handwrite { from { clip-path:inset(0 100% 0 0); } to { clip-path:inset(0 0 0 0); } }
     @media (prefers-reduced-motion:reduce) { h1, .date { clip-path:none; animation:none; } }
@@ -165,7 +166,7 @@
     <!-- 사진을 바꾸려면 assets/hero-placeholder.png 파일을 같은 이름의 사진으로 교체하세요. -->
     <section class="hero" aria-label="김수용과 백서혜의 결혼 안내">
       <div class="hero-copy">
-        <h1>김수용·백서혜</h1>
+        <img class="hero-name-animation" src="assets/handwriting-animated.svg" alt="김수용 백서혜">
       </div>
       <p class="date">2026년 11월 7일 토요일</p>
     </section>
