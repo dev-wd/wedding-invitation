@@ -83,8 +83,12 @@
     .location h2 { margin:0; color:#222; font-size:19px; font-weight:400; letter-spacing:.08em; }
     .location-name { margin:22px 0 5px; color:var(--ink); font-size:16px; font-weight:500; line-height:1.9; }
     .location-detail { margin:0 0 26px; color:var(--ink)!important; font-size:16px; font-weight:500; line-height:1.9; opacity:1!important; }
-    .address-copy { display:inline-grid; width:1em; height:1em; margin-left:.3em; padding:0; border:0; background:transparent; color:currentColor; vertical-align:-.11em; cursor:pointer; }
-    .address-copy svg { width:100%; height:100%; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.7; }
+    .address-copy { position:relative; display:inline-grid; width:18px; height:18px; margin-left:.42em; padding:0; border:0; background:transparent; color:#8A968C; vertical-align:-.18em; cursor:pointer; }
+    .address-copy svg { display:none; }
+    .address-copy::before, .address-copy::after { position:absolute; display:block; box-sizing:border-box; width:10px; height:12px; border:1.5px solid currentColor; border-radius:2px; content:""; }
+    .address-copy::before { top:2px; left:2px; opacity:.72; }
+    .address-copy::after { right:2px; bottom:2px; background:#f5f6f4; }
+    .address-copy:active { transform:scale(.9); }
     .copy-toast { position:fixed; z-index:30; bottom:calc(28px + env(safe-area-inset-bottom)); left:50%; padding:11px 16px; border-radius:20px; background:var(--ink); color:#fff; font:500 14px/1 "SUIT", sans-serif; letter-spacing:-.02em; opacity:0; pointer-events:none; transform:translate(-50%, 10px); transition:opacity .18s ease, transform .18s ease; }
     .copy-toast.is-visible { opacity:1; transform:translate(-50%, 0); }
     .location-map { height:250px; margin:0 0 13px; overflow:hidden; border-radius:12px; background:#e8ece5; box-shadow:0 3px 10px rgba(53,62,43,.08); }
