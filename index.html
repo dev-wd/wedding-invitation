@@ -72,6 +72,10 @@
     .location h2 { margin:0; color:#222; font-size:19px; font-weight:400; letter-spacing:.08em; }
     .location-detail { margin:22px 0 26px; color:#53604e; font-size:13px; line-height:1.9; }
     .location-detail strong { display:block; color:#30382b; font-size:15px; font-weight:500; }
+    .address-copy { display:inline-grid; width:1em; height:1em; margin-left:.3em; padding:0; border:0; background:transparent; color:currentColor; vertical-align:-.11em; cursor:pointer; }
+    .address-copy svg { width:100%; height:100%; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.7; }
+    .copy-toast { position:fixed; z-index:30; bottom:calc(28px + env(safe-area-inset-bottom)); left:50%; padding:11px 16px; border-radius:20px; background:var(--ink); color:#fff; font:500 14px/1 "SUIT", sans-serif; letter-spacing:-.02em; opacity:0; pointer-events:none; transform:translate(-50%, 10px); transition:opacity .18s ease, transform .18s ease; }
+    .copy-toast.is-visible { opacity:1; transform:translate(-50%, 0); }
     .location-map { height:250px; margin:0 0 13px; overflow:hidden; border-radius:12px; background:#e8ece5; box-shadow:0 3px 10px rgba(53,62,43,.08); }
     .location-map #naver-map { width:100%; height:100%; }
     .parking-info { margin-top:13px; padding:19px 18px; border-radius:12px; background:#fff; text-align:left; box-shadow:0 3px 10px rgba(53,62,43,.08); }
@@ -214,7 +218,7 @@
     <section class="location" id="location" aria-labelledby="location-title">
       <p class="section-eyebrow">LOCATION</p>
       <h2 id="location-title">오시는 길</h2>
-      <p class="location-detail p3"><strong>주소</strong>서울특별시 강남구 영동대로 737 (청담동)</p>
+      <p class="location-detail p3"><strong>주소</strong>서울특별시 강남구 영동대로 737 (청담동)<button class="address-copy" type="button" aria-label="주소 복사" data-copy-address><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="4" width="10" height="14" rx="2"></rect><path d="M15 18v1a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></svg></button></p>
       <div class="location-map" role="img" aria-label="리베라 청담 위치 지도"><div id="naver-map"></div></div>
       <div class="transport-info">
         <p class="transport-label">지하철</p>
@@ -266,6 +270,7 @@
     <figure class="closing-photo"><img src="assets/gallery/KJW04417-0.jpg" alt="김수용과 백서혜의 웨딩 사진"></figure>
     <footer>WITH LOVE, SOOYONG &amp; SEOHYE</footer>
   </main>
+  <div class="copy-toast" role="status" aria-live="polite">주소가 복사되었습니다</div>
   <div class="gallery-modal" role="dialog" aria-modal="true" aria-label="갤러리 사진 크게 보기">
     <button class="gallery-close" type="button" aria-label="갤러리 닫기">×</button>
     <button class="gallery-nav gallery-prev" type="button" aria-label="이전 사진">‹</button>
@@ -275,8 +280,12 @@
   </div>
   <script type="module">
     import justifiedLayout from 'https://esm.sh/justified-layout@4.1.0';
+    let allowProgrammaticCopy = false;
     ['copy', 'cut', 'paste', 'contextmenu', 'dragstart', 'selectstart'].forEach((eventName) => {
-      document.addEventListener(eventName, (event) => event.preventDefault());
+      document.addEventListener(eventName, (event) => {
+        if (eventName === 'copy' && allowProgrammaticCopy) return;
+        event.preventDefault();
+      });
     });
     const naverMapElement = document.getElementById('naver-map');
     if (naverMapElement && window.naver?.maps) {
@@ -303,6 +312,32 @@
         setTimeout(() => { button.innerHTML = original; }, 1800);
       });
     });
+    const addressCopyButton = document.querySelector('[data-copy-address]');
+    const copyToast = document.querySelector('.copy-toast');
+    let copyToastTimer;
+    const copyAddress = async () => {
+      const address = '서울특별시 강남구 영동대로 737 (청담동)';
+      try {
+        await navigator.clipboard.writeText(address);
+      } catch {
+        const temporaryInput = document.createElement('textarea');
+        temporaryInput.value = address;
+        temporaryInput.setAttribute('readonly', '');
+        temporaryInput.style.position = 'fixed';
+        temporaryInput.style.opacity = '0';
+        document.body.append(temporaryInput);
+        temporaryInput.select();
+        allowProgrammaticCopy = true;
+        const didCopy = document.execCommand('copy');
+        allowProgrammaticCopy = false;
+        temporaryInput.remove();
+        if (!didCopy) return;
+      }
+      clearTimeout(copyToastTimer);
+      copyToast.classList.add('is-visible');
+      copyToastTimer = setTimeout(() => copyToast.classList.remove('is-visible'), 1800);
+    };
+    addressCopyButton.addEventListener('click', copyAddress);
     document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
       trigger.addEventListener('click', () => {
         const item = trigger.closest('.accordion-item');
