@@ -421,6 +421,13 @@
       'KJW04907-0.jpg', 'KJW04918-0.jpg'
     ];
     const landscapeSources = new Set(['KJW00852-0.jpg', 'KJW01251-0.jpg', 'KJW01407-0.jpg', 'KJW01680-0.jpg', 'KJW02476-0.jpg', 'KJW02843-0.jpg', 'KJW03390-0.jpg', 'KJW03683-0.jpg', 'KJW04216-0.jpg']);
+    // 미리보기 외 사진도 즉시 캐시에 적재해, 확대 보기와 좌우 전환을 지연 없이 보여 줍니다.
+    const galleryPreloaders = gallerySources.map((source) => {
+      const image = new Image();
+      image.decoding = 'async';
+      image.src = `assets/gallery/${source}`;
+      return image;
+    });
     const galleryGrid = document.querySelector('.gallery-grid');
     galleryGrid.innerHTML = gallerySources.map((source, index) =>
       `<button class="gallery-item${landscapeSources.has(source) ? ' is-landscape' : ''}" type="button" data-gallery-index="${index}" aria-label="갤러리 사진 ${index + 1} 크게 보기"><img src="assets/gallery/${source}" alt="김수용과 백서혜의 갤러리 사진 ${index + 1}" loading="lazy"></button>`
