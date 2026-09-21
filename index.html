@@ -132,7 +132,7 @@
     .gift > p { margin:0 0 30px; color:#666; font-size:12px; line-height:1.9; word-break:keep-all; }
     .accordion { display:grid; gap:12px; text-align:left; }
     .accordion-item { overflow:hidden; border-radius:8px; background:#fff; box-shadow:0 1px 3px rgba(53,62,43,.12); transition:background .25s, box-shadow .25s; }
-    .accordion-item.is-open { background:var(--paper); box-shadow:0 5px 14px rgba(53,62,43,.13); }
+    .accordion-item.is-open { background:#fff; box-shadow:none; }
     .accordion-trigger { width:100%; height:60px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; border:0; border-radius:8px; background:#fff; color:#444; font:500 14px "SUIT", sans-serif; cursor:pointer; }
     .accordion-arrow { width:20px; height:20px; display:grid; place-items:center; color:#7b8477; transition:transform .22s ease; }
     .accordion-arrow svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.7; }
@@ -140,9 +140,9 @@
     .accordion-item.is-open .accordion-arrow { transform:rotate(180deg); }
     .accordion-panel { display:grid; grid-template-rows:0fr; transition:grid-template-rows .25s ease; }
     .accordion-item.is-open .accordion-panel { grid-template-rows:1fr; }
-    .accordion-panel-inner { min-height:0; overflow:hidden; padding:0 12px; }
-    .accordion-item.is-open .accordion-panel-inner { padding:14px 12px 14px; }
-    .account-card { padding:22px; border-radius:12px; background:#fff; box-shadow:0 4px 11px rgba(53,62,43,.14); }
+    .accordion-panel-inner { min-height:0; overflow:hidden; padding:0; }
+    .accordion-item.is-open .accordion-panel-inner { padding:0; }
+    .account-card { padding:8px 16px 18px; border-radius:0; background:transparent; box-shadow:none; }
     .account-name { display:flex; justify-content:space-between; margin-bottom:22px; color:#333; font-size:13px; }
     .account-name strong { font-weight:400; }
     .account-actions { display:flex; gap:8px; }
