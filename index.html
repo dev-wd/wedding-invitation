@@ -324,19 +324,23 @@
     }
     document.querySelectorAll('[data-copy]').forEach((button) => {
       button.addEventListener('click', async () => {
-        const original = button.innerHTML;
         try {
           await navigator.clipboard.writeText(button.dataset.copy);
-          button.innerHTML = '<span>계좌번호가 복사되었습니다</span>';
+          showCopyToast('계좌번호가 복사되었습니다');
         } catch {
-          button.innerHTML = '<span>직접 복사해 주세요</span>';
+          showCopyToast('복사에 실패했습니다');
         }
-        setTimeout(() => { button.innerHTML = original; }, 1800);
       });
     });
     const addressCopyButton = document.querySelector('[data-copy-address]');
     const copyToast = document.querySelector('.copy-toast');
     let copyToastTimer;
+    const showCopyToast = (message) => {
+      copyToast.textContent = message;
+      copyToast.classList.add('is-visible');
+      clearTimeout(copyToastTimer);
+      copyToastTimer = setTimeout(() => copyToast.classList.remove('is-visible'), 1800);
+    };
     const copyAddress = async () => {
       const address = '서울특별시 강남구 영동대로 737 (청담동)';
       try {
@@ -355,9 +359,7 @@
         temporaryInput.remove();
         if (!didCopy) return;
       }
-      clearTimeout(copyToastTimer);
-      copyToast.classList.add('is-visible');
-      copyToastTimer = setTimeout(() => copyToast.classList.remove('is-visible'), 1800);
+      showCopyToast('주소가 복사되었습니다');
     };
     addressCopyButton.addEventListener('click', copyAddress);
     document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
@@ -406,11 +408,8 @@
       }
     });
     document.querySelector('[data-copy-url]').addEventListener('click', async (event) => {
-      const button = event.currentTarget;
-      const original = button.innerHTML;
-      try { await navigator.clipboard.writeText(shareUrl); button.innerHTML = '<span>주소가 복사되었습니다</span>'; }
-      catch { button.innerHTML = '<span>주소를 직접 복사해 주세요</span>'; }
-      restoreButton(button, original);
+      try { await navigator.clipboard.writeText(shareUrl); showCopyToast('주소가 복사되었습니다'); }
+      catch { showCopyToast('복사에 실패했습니다'); }
     });
     const gallerySources = [
       'KJW00089-0.jpg', 'KJW00451-0.jpg', 'KJW00740-0.jpg', 'KJW00779-0.jpg', 'KJW00852-0.jpg', 'KJW00969-0.jpg',
