@@ -181,6 +181,51 @@
     .location .location-detail { font-size:14px!important; }
     .gallery-item { background:var(--paper)!important; }
     @media (max-width:380px) { .hero { min-height:700px; } h1 { font-size:48px; } .intro { padding-inline:23px; } }
+
+    /* About Each Other and Timeline — use the existing invitation type and palette. */
+    .each-other, .our-timeline { padding:76px 32px 80px; scroll-margin-top:24px; }
+    .each-other { background:#fff; }
+    .our-timeline { background:#F6F6F4; }
+    .story-heading { margin:0 0 38px; text-align:center; }
+    .story-heading .section-label { margin:0 0 .8rem; }
+    .partner-story + .partner-story { margin-top:42px; padding-top:38px; border-top:1px solid var(--line); }
+    .partner-byline { display:flex; align-items:center; gap:10px; margin:0 0 18px; }
+    .partner-emoji { flex-shrink:0; font-size:24px; line-height:1.4; }
+    .partner-byline h4 { margin:0; color:var(--ink); font-size:17px; font-weight:500; line-height:1.6; word-break:keep-all; }
+    .partner-copy p { margin:0; color:var(--text); font-size:16px; font-weight:400; line-height:1.95; word-break:keep-all; overflow-wrap:break-word; }
+    .partner-copy p + p { margin-top:18px; }
+    .partner-facts { margin:26px 0 0; padding:16px 18px; border-radius:8px; background:#F6F6F4; }
+    .partner-facts > div { display:grid; grid-template-columns:100px minmax(0, 1fr); gap:10px; padding:9px 0; }
+    .partner-facts > div + div { border-top:1px solid var(--line); }
+    .partner-facts dt, .partner-facts dd { margin:0; font-size:13px; line-height:1.75; word-break:keep-all; overflow-wrap:break-word; }
+    .partner-facts dt { color:#72756F; }
+    .partner-facts dd { color:var(--ink); }
+    .story-timeline { position:relative; display:grid; gap:72px; margin:0; padding:0; list-style:none; }
+    .story-timeline::before { content:""; position:absolute; top:0; bottom:0; left:50%; width:1px; background:#d4d9d2; transform:translateX(-50%); pointer-events:none; }
+    .story-event { position:relative; display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); align-items:center; gap:36px; }
+    .story-event::before { content:""; position:absolute; z-index:1; top:50%; left:50%; width:7px; height:7px; border:2px solid #F6F6F4; border-radius:50%; background:var(--accent); transform:translate(-50%, -50%); pointer-events:none; }
+    .story-event:nth-child(even) .story-event-photo { order:2; }
+    .story-event-photo { margin:0; overflow:hidden; border-radius:8px; background:var(--line); }
+    .story-event-photo img { display:block; width:100%; height:auto; aspect-ratio:1; object-fit:cover; }
+    .story-event-copy { min-width:0; }
+    .story-event time { display:block; margin:0 0 8px; color:#72756F; font-size:11px; line-height:1.6; letter-spacing:.02em; }
+    .story-event h4 { margin:0 0 10px; color:var(--ink); font-size:15px; font-weight:500; line-height:1.6; word-break:keep-all; }
+    .story-event p { margin:0; color:var(--text); font-size:13px; line-height:1.85; word-break:keep-all; overflow-wrap:break-word; }
+    .story-event p strong { font-weight:500; }
+    @media (max-width:380px) {
+      .each-other, .our-timeline { padding-inline:24px; }
+      .partner-facts { padding-inline:14px; }
+      .partner-facts > div { grid-template-columns:94px minmax(0, 1fr); gap:8px; }
+      .story-event { gap:32px; }
+    }
+    @media (max-width:340px) {
+      .story-timeline::before { left:3px; }
+      .story-event { grid-template-columns:1fr; gap:18px; padding-left:24px; }
+      .story-event::before { left:3px; }
+      .story-event-photo { width:76%; }
+      .story-event:nth-child(even) .story-event-photo { order:0; justify-self:end; }
+      .story-event-copy { padding-left:0; }
+    }
   </style>
 </head>
 <body>
@@ -206,7 +251,7 @@
       <img src="assets/gallery/KJW04505-0.jpg" alt="김수용과 백서혜의 커플 사진">
     </figure>
     <section class="about" aria-labelledby="about-title">
-      <h2 class="about-title section-label" id="about-title">ABOUT US</h2>
+      <h2 class="about-title section-label" id="about-title">BRIDE &amp; GROOM</h2>
       <div class="about-intro"><h3 class="section-subtitle">저희를 소개합니다.</h3></div>
       <!-- 각 프로필 사진과 소개 문구는 실제 정보로 교체해 주세요. -->
       <div class="profile-list">
@@ -223,6 +268,61 @@
 겉으로만 조용한 개구쟁이 👸</p>
         </article>
       </div>
+    </section>
+    <section class="each-other" id="about-each-other" aria-labelledby="each-other-title">
+      <header class="story-heading">
+        <h2 class="section-label" id="each-other-title">ABOUT EACH OTHER</h2>
+        <h3 class="section-subtitle">서로가 바라본 우리</h3>
+      </header>
+      <article class="partner-story" aria-labelledby="about-groom-title">
+        <header class="partner-byline"><span class="partner-emoji" role="img" aria-label="신부">👰</span><h4 id="about-groom-title">서혜가 소개하는 수용</h4></header>
+        <div class="partner-copy">
+          <p>수용이는 다정하고 든든한 사람이에요. 스스로는 게으르다고 하지만 사실 무슨 일이든 미리 준비하고 움직이는 사람이라, 얼레벌레 ENTP인 저는 수용이를 믿고 따라가기만 하면 돼요. 제 말에 언제나 귀 기울이고 공감해 주고, 제가 지쳐 보일 땐 기분을 환기시켜 줘요. 가끔은 생각지도 못한 이벤트로 저를 깜짝 놀라게 하는 로맨티스트이기도 하고요.</p>
+          <p>노래에 진심이라 종종 노래방에 함께 가는데, 한 번씩 트로트를 구호까지 넣어 열창할 땐 웃음을 참을 수가 없어요. 앞으로도 언제나 제 편이 되어 주고, 저를 받아주고, 응원해 줄 거라고 믿어요!</p>
+        </div>
+        <dl class="partner-facts">
+          <div><dt>애창곡</dt><dd>베텔기우스 — 유우리</dd></div>
+          <div><dt>인생 영화</dt><dd>Mr. Nobody (2009)<br>바빌론 (2023)</dd></div>
+          <div><dt>모스트 LOL 챔피언</dt><dd>징크스, 자야</dd></div>
+        </dl>
+      </article>
+      <article class="partner-story" aria-labelledby="about-bride-title">
+        <header class="partner-byline"><span class="partner-emoji" role="img" aria-label="신랑">🤵</span><h4 id="about-bride-title">수용이 소개하는 서혜</h4></header>
+        <div class="partner-copy">
+          <p>서혜는 털털하면서도 섬세한 사람입니다. 제가 생각이 많아져 마음이 지칠 때면, 필요한 조언을 건네고 부담스럽지 않게 곁을 챙겨줘요. 좋아하는 걸 진심으로 응원해주는 사람이라, 제가 하고 싶어하지만 망설일 때에 의심하지 않고 앞으로 나갈 수 있게 힘을 주는 사람입니다.</p>
+          <p>퇴근하고 스트레스를 풀기 위해 종종 롤 증강 칼바람을 하는데, 분명 주포지션은 서포터인데, 칼바람에서는 뒤도 돌아보지 않고 적진으로 돌진하는 반전 매력이 있어요.</p>
+          <p>서혜와 함께 걸어갈 날들이 기대돼요. 앞으로도 함께 웃으며 행복한 미래를 만들어 갈게요 ^_^</p>
+        </div>
+        <dl class="partner-facts">
+          <div><dt>애창곡</dt><dd>화장을 고치고 — 왁스</dd></div>
+          <div><dt>인생 영화</dt><dd>패왕별희 (1993)<br>시네마 천국 (1988)</dd></div>
+          <div><dt>모스트 LOL 챔피언</dt><dd>룰루, 헤카림</dd></div>
+        </dl>
+      </article>
+    </section>
+    <section class="our-timeline" id="timeline" aria-labelledby="timeline-title">
+      <header class="story-heading">
+        <h2 class="section-label" id="timeline-title">TIMELINE</h2>
+        <h3 class="section-subtitle">우리가 함께한 시간</h3>
+      </header>
+      <ol class="story-timeline">
+        <li class="story-event">
+          <figure class="story-event-photo"><img src="assets/timeline/first-conversation.jpeg" width="930" height="930" loading="lazy" alt="처음 대화하며 서로 가까운 동네에 산다는 것을 알게 된 카카오톡 대화"></figure>
+          <div class="story-event-copy"><time datetime="2025-01">2025년 1월</time><h4>갑작스러운 소개팅 ☕️</h4><p>소개받고 보니 걸어서 20분 거리 이웃!<br>말이 너무 잘 통해서 만나기도 전에 카톡만 3박 4일 <span style="white-space:nowrap">했어요 💬</span></p></div>
+        </li>
+        <li class="story-event">
+          <figure class="story-event-photo"><img src="assets/timeline/first-couple-photo.jpeg" width="1064" height="1064" loading="lazy" alt="함께 찍은 네 컷 사진을 들고 있는 모습"></figure>
+          <div class="story-event-copy"><time datetime="2025-02">2025년 2월</time><h4>동네 커플 탄생 🏡</h4><p>집이 가까운 덕에 일주일에도 몇 번씩 만나다 서로의 마음을 확인했어요.<br>그렇게 우리는 <strong>평촌 커플</strong>이 <span style="white-space:nowrap">되었답니다 💑</span></p></div>
+        </li>
+        <li class="story-event">
+          <figure class="story-event-photo"><img src="assets/timeline/proposal-night.jpeg" width="1246" height="1246" loading="lazy" alt="프로포즈하던 날 별이 가득했던 밤하늘"></figure>
+          <div class="story-event-copy"><time datetime="2025-10">2025년 10월</time><h4>별빛 아래 프로포즈 🌌</h4><p>밤하늘을 보다가 별똥별이 떨어지자 이어진, 깜짝 프로포즈!<br>고민할 것도 없이 “응!” <span style="white-space:nowrap">했어요 💍</span></p></div>
+        </li>
+        <li class="story-event">
+          <figure class="story-event-photo"><img src="assets/timeline/wedding-shoot.jpeg" width="1228" height="1228" loading="lazy" alt="웨딩 촬영 날 예복을 입고 함께 찍은 거울 셀카"></figure>
+          <div class="story-event-copy"><time datetime="2026-11-07">2026년 11월 7일</time><h4>가족이 되는 날 🤍</h4><p>이제 서로의 손을 꼭 잡고<br>부부의 길을 걸어갑니다!</p></div>
+        </li>
+      </ol>
     </section>
     <section class="announcement">
       <h2 class="section-label">WEDDING DAY</h2>
